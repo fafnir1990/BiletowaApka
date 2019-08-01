@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="pb-5">Lista miejscowości</h1>
+    <table class="table app-datatable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>Powiat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for town in object_list %}
+            <tr>
+                <td>{{town.twn_id}}</td>
+                <td><a href="{% url 'towns_detail' town.twn_id %}">{{town.twn_name}}</a></td>
+                <td>{{town.twn_powid}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="pb-5">Lista województw</h1>
+    <table class="table app-datatable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>Województwo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pow in object_list %}
+            <tr>
+                <td>{{pow.pow_id}}</td>
+                <td><a href="{% url 'powiats_detail' pow.pow_id %}">{{pow.pow_name}}</a></td>
+                <td>{{pow.pow_voiid}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

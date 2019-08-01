@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="pb-5">Lista miejscowości</h1>
+    <table class="table app-datatable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cena</th>
+                <th>Miasto</th>
+                <th>Awers</th>
+                <th>Rewers</th>
+                <th>Posiadacz</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tic in object_list %}
+            <tr>
+                <td>{{tic.tic_id}}</td>
+                <td>{{tic.tic_value}}</td>
+                <td>{{tic.tic_importedtown}}</td>
+
+                {% if tic.tic_obverse %}
+                    <td><img src="{{tic.tic_obverse.url}}" alt="{{tic.tic_obverse}}"></td>
+                {% else %}
+                    <td>BRAK></td>
+                {% endif %}
+                {% if tic.tic_reverse %}
+                   <td><img src="{{tic.tic_reverse.url}}" alt="{{tic.tic_reverse}}"></td>
+                {% else %}
+                    <td>BRAK</td>
+                {% endif %}
+                <td>{{tic.tic_ownerid}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

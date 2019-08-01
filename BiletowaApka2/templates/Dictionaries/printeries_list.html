@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="pb-5">Lista województw</h1>
+    <table class="table app-datatable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prt in object_list %}
+            <tr>
+                <td>{{prt.prt_id}}</td>
+                <td><a href="{% url 'printeries_detail' prt.prt_id %}">{{prt.prt_name}}</a></td>
+                <td>{{prt.prt_abbreviation}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}
